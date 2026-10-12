@@ -1,0 +1,20 @@
+{
+  "name": "eq-reply",
+  "version": "1.0.0",
+  "private": true,
+  "description": "高情商回复生成网站：输入聊天原话或沟通场景，生成可直接复制的高情商回复（DeepSeek 驱动，移动端优先）。",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test/server-self-test.js",
+    "test:browser": "node test/browser-self-test.js"
+  },
+  "engines": {
+    "node": ">=18.12.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}

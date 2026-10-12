@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>高情商回复生成器</title>
+  <meta name="description" content="输入对方的原话或你的沟通场景，一键生成可直接复制的高情商回复。输入内容仅用于本次生成，服务器不存储。">
+  <meta name="theme-color" content="#f4f8f7">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <header class="site-header">
+    <h1>高情商回复</h1>
+    <p class="privacy-note">🔒 输入内容仅用于本次生成，服务器不存储</p>
+  </header>
+
+  <main class="container">
+    <section class="card input-card" aria-label="输入区">
+      <label class="field-label" for="user-input">对方的话 / 你的场景</label>
+      <textarea id="user-input" rows="6" placeholder="粘贴对方发来的原话，或描述沟通场景与诉求。例如：&#10;同事把锅甩给我，领导却让我背，该怎么回应不伤和气？"></textarea>
+      <div class="input-meta">
+        <span id="char-count" class="char-count">0 / 2000</span>
+        <span id="char-warning" class="char-warning" hidden>已超过上限，请删减后再生成</span>
+      </div>
+      <div class="options">
+        <fieldset class="option-group">
+          <legend class="option-label">语气</legend>
+          <div class="segmented" role="group" aria-label="选择语气">
+            <button type="button" class="seg-btn" data-tone="warm" aria-pressed="true">温和</button>
+            <button type="button" class="seg-btn" data-tone="formal" aria-pressed="false">正式</button>
+            <button type="button" class="seg-btn" data-tone="humorous" aria-pressed="false">幽默</button>
+          </div>
+        </fieldset>
+        <fieldset class="option-group">
+          <legend class="option-label">长度</legend>
+          <div class="segmented" role="group" aria-label="选择长度">
+            <button type="button" class="seg-btn" data-len="short" aria-pressed="false">短</button>
+            <button type="button" class="seg-btn" data-len="medium" aria-pressed="true">中</button>
+            <button type="button" class="seg-btn" data-len="long" aria-pressed="false">长</button>
+          </div>
+        </fieldset>
+      </div>
+      <p id="input-hint" class="input-hint" role="status" hidden></p>
+      <button type="button" id="generate-btn" class="primary-btn" disabled>
+        <span class="spinner" id="btn-spinner" aria-hidden="true" hidden></span>
+        <span id="btn-label">生成回复</span>
+      </button>
+    </section>
+
+    <div id="error-box" class="error-box" role="alert" hidden>
+      <p id="error-text" class="error-text"></p>
+      <button type="button" id="retry-btn" class="secondary-btn">重试</button>
+    </div>
+
+    <section id="loading-box" class="loading-box" aria-live="polite" hidden>
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </section>
+
+    <section id="results" class="results" aria-live="polite" hidden>
+      <div class="results-head">
+        <h2>回复建议</h2>
+        <button type="button" id="regenerate-btn" class="secondary-btn">换一批</button>
+      </div>
+      <div id="results-list"></div>
+      <p id="results-notes" class="reply-notes" hidden></p>
+    </section>
+
+    <section id="manual-copy" class="card manual-copy" hidden>
+      <p class="manual-title">自动复制失败</p>
+      <p class="manual-tip">请长按下方文本，手动选择并复制：</p>
+      <div id="manual-copy-text" class="manual-text"></div>
+    </section>
+
+    <footer class="site-footer">
+      <p>回复由 AI 生成，仅供参考，请结合实际情况使用。</p>
+      <p>不存储输入内容 · 无账号 · 无历史记录</p>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
